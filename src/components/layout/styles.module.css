@@ -1,0 +1,20 @@
+.background {
+    height: 100vh;
+    width: 100vw;
+    background-image: url(https://apod.nasa.gov/apod/image/2301/M_45_Plejarden_Stefan_Thrun_klein4096.jpg);
+    background-attachment: fixed;
+    overflow-y: auto;
+}
+
+.backgroundCover {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
