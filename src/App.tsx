@@ -10,34 +10,44 @@ import { DailyastronomyPictures } from './services/api/api_manager/astroOfDDay'
 
 
 
-type propsData = {
-  url: string,
-  title: string,
-  explanation: string,
-  copyright: string,
-  date: string
-}
+// type propsData = {
+//   url: string,
+//   title: string,
+//   explanation: string,
+//   copyright: string,
+//   date: string
+// }
 
 function App() {
 
-  const { } = useQuery(["astro"], DailyastronomyPictures)
+  const { data, isLoading, isError, error } = useQuery(["astro"], DailyastronomyPictures)
 
-  const [pictureOfDDay, setpictureOfDDay] = useState<propsData | undefined>(undefined)
+  // console.log(data?.data)
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const res = await DailyastronomyPictures();
-        setpictureOfDDay(res.data)
-      } catch (error) {
-        console.log(error)
-      }
-    })()
-  }, [])
+  // const [pictureOfDDay, setpictureOfDDay] = useState<propsData | undefined>(undefined)
+
+  // useEffect(() => {
+  //   (async () => {
+  //     try {
+  //       const res = await DailyastronomyPictures();
+  //       setpictureOfDDay(res.data)
+  //     } catch (error) {
+  //       console.log(error)
+  //     }
+  //   })()
+  // }, [])
+
+  // if (isError) {
+  //   return <span>Error: {error?.message}</span>
+  // }
+
 
   return (
     <Background>
-      <ImageCard data={pictureOfDDay} />
+      {
+        isLoading ? <div className="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> :
+          <ImageCard data={data?.data} />
+      }
     </Background>
   )
 }
